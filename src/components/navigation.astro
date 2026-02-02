@@ -1,0 +1,58 @@
+---
+import Logo from "./logo.astro";
+---
+
+<nav class="app-navbar">
+    <a href="/">
+        <Logo />
+    </a>
+    <div class="app-navbar__mobile-button">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+    <ul class="app-navbar__links">
+        <li>
+            <a class="app-navbar__link" href="/services">Services</a>
+        </li>
+        <li>
+            <a class="app-navbar__link" href="/projects">Projects</a>
+        </li>
+        <li>
+            <a class="app-navbar__link" href="/talks">Talks</a>
+        </li>
+        <li>
+            <a class="app-navbar__link" href="/about">About</a>
+        </li>
+        <li>
+            <a class="app-navbar__link app-button" href="/contact">Contact</a>
+        </li>
+    </ul>
+</nav>
+
+<style>
+    /* TODO: move in styles ? */
+    .app-navbar-link.app-button {
+        display: inline;
+    }
+</style>
+
+<script>
+    const navbarLinks: HTMLElement =
+        document.querySelector<HTMLElement>(".app-navbar__links")!;
+    const navbarMobileButton: HTMLElement = document.querySelector<HTMLElement>(
+        ".app-navbar__mobile-button",
+    )!;
+    let isMobileNavbarOpened: boolean = false;
+
+    function toggleMobileNavbar(): void {
+        isMobileNavbarOpened = !isMobileNavbarOpened;
+        document.body.style.overflow = isMobileNavbarOpened ? "hidden" : "auto";
+
+        if (isMobileNavbarOpened) {
+            navbarLinks.style.transform = "translateY(0%)";
+            return;
+        }
+        navbarLinks.style.transform = "translateY(-100%)";
+    }
+
+    navbarMobileButton.addEventListener("click", () => toggleMobileNavbar());
+</script>

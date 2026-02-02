@@ -1,0 +1,14 @@
+@use "../theming" as theming;
+
+$default-theme: (
+    background-color-light: #1f1f1f,
+    background-color-dark: #121212,
+    button-background-color-hover: #ffffff,
+    primary-color: #bb86fc,
+        info-color: rgba(120, 163, 255, 0.274),
+        warning-color: rgba(246, 255, 120, 0.274),
+    text-color: #e9e9e9,
+    text-color-secondary: #8f8f8f
+);
+
+@include theming.apply-theme($default-theme);

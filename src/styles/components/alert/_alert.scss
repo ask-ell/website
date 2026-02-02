@@ -1,0 +1,14 @@
+@use "../../abstracts/variables" as *;
+@use "../../abstracts/mixins" as *;
+
+@include component("alert") {
+    border-radius: $border-radius;
+    padding: $padding;
+    display: block;
+    width: max-content;
+    margin-bottom: $padding;
+    
+        i {
+            margin-right: 0.5rem;
+        }
+}
