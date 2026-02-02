@@ -1,0 +1,15 @@
+{
+  "name": "@ask-ell/website",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "start:dev": "astro dev",
+    "build": "astro build"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^4.1.3",
+    "@astrojs/rss": "^4.0.15",
+    "astro": "^5.17.1",
+    "preact": "^10.28.3"
+  }
+}
