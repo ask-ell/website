@@ -1,0 +1,13 @@
+@use 'sass:map';
+@use "../../abstracts/mixins" as *;
+
+@mixin apply-alert-theming($theme) {
+    @include component("alert") {
+        color: map.get($theme, "text-color");
+        background-color: map.get($theme, "info-color");
+
+        @include modifier("warning") {
+                background-color: map.get($theme, "warning-color");
+        }
+    }
+}

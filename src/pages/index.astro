@@ -1,9 +1,11 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-const pageTitle = "Ask'ell improve humanity with technology";
+import WipAlert from "../components/wip-alert.astro";
+import BaseLayout from "../layouts/base.layout.astro";
+const title = "Improve humanity with technology";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <h2>Work in progress</h2>
-  <p>For any question or request please write to askellcompany@gmail.com</p>
+<BaseLayout title={title}>
+  <div class="app-container">
+    <WipAlert />
+  </div>
 </BaseLayout>

@@ -1,0 +1,32 @@
+@use "../../abstracts/variables" as *;
+@use "../../abstracts/mixins" as *;
+
+@mixin websiteBannerPartial {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: $background-color; // TODO: move in theming module
+  z-index: -1;
+}
+
+@include component("banner") {
+  position: relative;
+  display: flex;
+  margin-bottom: 5rem;
+  padding-bottom: 1rem;
+
+  &::before {
+    @include websiteBannerPartial;
+    transform: skewY(-3deg) translateY(-4rem);
+  }
+
+  &::after {
+    @include websiteBannerPartial;
+    transform: skewY(-3deg) translateY(2rem);
+    box-shadow: $basic-shadow;
+  }
+}

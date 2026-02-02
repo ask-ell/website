@@ -1,0 +1,18 @@
+@use "sass:math";
+
+$font-family: "Roboto", sans-serif;
+
+$padding: 1rem;
+
+$border-radius: calc($padding / 4);
+
+$icon-font-size: 1.5rem;
+
+$background-color: #121212; // TODO: remove
+
+$basic-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+$navbar-size: 100px;
+$logo-size: calc($navbar-size - 40px);
+
+$mobile-max-size: 800px;

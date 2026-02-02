@@ -1,0 +1,32 @@
+@use "../../abstracts/mixins" as *;
+
+@include component("links-group") {
+  margin: 0;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+
+  @include element("item") {
+    margin-left: 2rem;
+    text-align: center;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  @include onWebsiteMobileSize {
+      flex-direction: column;
+  
+      @include element("item") {
+        margin-left: 0;
+        padding-bottom: 1rem;
+  
+        &:last-child {
+          padding-bottom: 0;
+        }
+      }
+  }
+}

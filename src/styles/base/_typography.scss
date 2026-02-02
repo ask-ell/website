@@ -1,0 +1,11 @@
+@use "../abstracts/variables" as *;
+
+html {
+  font-size: 16px;
+  font-style: normal;
+
+  * {
+    font-family: $font-family;
+  }
+
+}
