@@ -4,6 +4,7 @@ import Footer from "../components/footer.astro";
 import Banner from "../components/banner.astro";
 import ContactForm from "../components/contact-form.astro";
 import "../styles/bootstrap.scss";
+
 const { title } = Astro.props;
 ---
 
@@ -20,7 +21,7 @@ const { title } = Astro.props;
     <title>{title} | Ask'ell</title>
     <base href="/" />
   </head>
-  <body>
+  <body class="default-theme">
     <Header />
     <main>
       <Banner title={title}>
@@ -29,10 +30,16 @@ const { title } = Astro.props;
         </div>
       </Banner>
       <slot />
-      <div class="app-container">
+      <div class="app-container contact-form">
         <ContactForm />
       </div>
     </main>
     <Footer />
   </body>
 </html>
+
+<style>
+  .contact-form {
+    margin-top: 4rem;
+  }
+</style>

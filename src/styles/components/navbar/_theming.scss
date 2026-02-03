@@ -1,0 +1,12 @@
+@use 'sass:map';
+@use "../../abstracts/mixins" as *;
+
+@mixin apply-navbar-theming($theme) {
+    @include block("navbar") {
+        @include on-mobile {
+            @include element("links") {
+                background-color: map.get($theme, "background-color-dark");;
+            }
+        }
+    }
+}

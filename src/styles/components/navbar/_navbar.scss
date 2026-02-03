@@ -1,19 +1,24 @@
 @use "../../abstracts/mixins" as *;
 @use "../../abstracts/variables" as *;
 
-@include component("navbar") {
+@include block("navbar") {
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   padding-top: 1rem;
   padding-bottom: 1rem;
   height: $navbar-size;
 
   @include element("links") {
+    margin: 0;
     display: flex;
     list-style: none;
     align-items: center;
     transition: 0.5s transform ease-out;
+li {
+    margin: 0;
+  }
   }
 
   @include element("link") {
@@ -35,12 +40,11 @@
     }
   }
 
-  @include onWebsiteMobileSize {
+    @include on-mobile {
     @include element("links") {
       flex-direction: column;
-        position: fixed;
+      position: fixed;
         z-index: 1;
-        background-color: $background-color; // TODO: move in theming module
         height: 100%;
         top: $navbar-size;
         left: 0;
