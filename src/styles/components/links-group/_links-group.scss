@@ -1,6 +1,6 @@
 @use "../../abstracts/mixins" as *;
 
-@include component("links-group") {
+@include block("links-group") {
   margin: 0;
   padding: 2rem 0;
   display: flex;
@@ -17,7 +17,7 @@
     }
   }
 
-  @include onWebsiteMobileSize {
+    @include on-mobile {
       flex-direction: column;
   
       @include element("item") {

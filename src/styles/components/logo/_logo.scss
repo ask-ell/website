@@ -1,0 +1,7 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/variables" as *;
+
+@include block("logo") {
+    height: $logo-size;
+    width: $logo-size;
+}

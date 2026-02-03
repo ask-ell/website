@@ -1,7 +1,7 @@
 @use "../../abstracts/variables" as *;
 @use "../../abstracts/mixins" as *;
 
-@include component("alert") {
+@include block("alert") {
     border-radius: $border-radius;
     padding: $padding;
     display: block;

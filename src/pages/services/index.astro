@@ -1,11 +1,36 @@
 ---
-import WipAlert from "../../components/wip-alert.astro";
 import BaseLayout from "../../layouts/base.layout.astro";
+import {
+    servicesMarkdownResources,
+    servicesCount,
+} from "../../shared/services";
 const title = "Services";
 ---
 
 <BaseLayout title={title}>
     <div class="app-container">
-        <WipAlert />
+        <p>We propose several services for our clients.</p>
+        {
+            servicesMarkdownResources.map(
+                ({ frontmatter: service, url }, index) => (
+                    <>
+                        <div
+                            class={`app-box ${index % 2 !== 0 && "app-box--reversed"}`}
+                        >
+                            <div class="app-box__content">
+                                <h2>{service.name}</h2>
+                                <p>{service.description}</p>
+                                <a href={url}>See more</a>
+                            </div>
+                            <div
+                                class="app-box__image"
+                                style={`background-image: url(/images/${service.imageFileName})`}
+                            />
+                        </div>
+                        {index != servicesCount - 1 && <hr />}
+                    </>
+                ),
+            )
+        }
     </div>
 </BaseLayout>

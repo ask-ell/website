@@ -1,0 +1,13 @@
+---
+import WipAlert from "../components/wip-alert.astro";
+import BaseLayout from "./base.layout.astro";
+
+const { frontmatter } = Astro.props;
+const title = `${frontmatter.name} - ${frontmatter.description}`;
+---
+
+<BaseLayout title={title}>
+    <div class="app-container">
+        <WipAlert />
+    </div>
+</BaseLayout>

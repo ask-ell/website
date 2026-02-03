@@ -1,23 +1,37 @@
 ---
 import BaseLayout from "../../layouts/base.layout.astro";
-import type { MarkdownResource } from "../../shared/astro";
-import type { Talk } from "../../shared/talks";
-const title = "Talks";
-const talks = Object.values<MarkdownResource<Talk>>(
-    import.meta.glob("./*.md", { eager: true }),
-);
+import { getResourceIdentifier } from "../../shared/astro";
+import { talks } from "../../shared/talks";
+import { membersMarkdownResources } from "../../shared/members";
+
+const title: string = "Talks";
 ---
 
 <BaseLayout title={title}>
     <div class="app-container">
         <ul>
             {
-                talks.map(({ frontmatter: talk }) => (
-                    <li>
-                        [{new Date(talk.date).toLocaleDateString()} ]
-                        <a href={talk.url}>{talk.title}</a> ({talk.lang})
-                    </li>
-                ))
+                talks.map((talk) => {
+                    const speaker = membersMarkdownResources.find(
+                        (member): boolean =>
+                            talk.speaker === getResourceIdentifier(member),
+                    );
+                    return (
+                        <li>
+                            [{new Date(talk.date).toLocaleDateString()} ]
+                            <a href={talk.url}>"{talk.title}"</a>
+                            {speaker && (
+                                <>
+                                    by{" "}
+                                    <a href={speaker.url}>
+                                        {speaker.frontmatter.name}
+                                    </a>
+                                </>
+                            )}
+                            ({talk.lang})
+                        </li>
+                    );
+                })
             }
         </ul>
     </div>

@@ -1,7 +1,7 @@
 @use "../../abstracts/variables" as *;
 @use "../../abstracts/mixins" as *;
 
-@mixin websiteBannerPartial {
+@mixin banner-partial-definition {
   position: absolute;
   content: "";
   display: block;
@@ -9,23 +9,22 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: $background-color; // TODO: move in theming module
   z-index: -1;
 }
 
-@include component("banner") {
+@include block("banner") {
   position: relative;
   display: flex;
   margin-bottom: 5rem;
   padding-bottom: 1rem;
 
   &::before {
-    @include websiteBannerPartial;
+    @include banner-partial-definition;
     transform: skewY(-3deg) translateY(-4rem);
   }
 
   &::after {
-    @include websiteBannerPartial;
+    @include banner-partial-definition;
     transform: skewY(-3deg) translateY(2rem);
     box-shadow: $basic-shadow;
   }

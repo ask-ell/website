@@ -1,0 +1,16 @@
+@use 'sass:map';
+@use "../../abstracts/mixins" as *;
+
+@mixin apply-banner-theming($theme) {
+    @include block("banner") {
+        $background-color: map.get($theme, "background-color-dark");
+
+        &::before {
+            background-color: $background-color
+        }
+
+        &::after {
+            background-color: $background-color
+        }
+    }
+}

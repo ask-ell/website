@@ -1,32 +1,41 @@
 @use "sass:map";
 @use "../abstracts/mixins" as mixins;
-@use "../components/button/theming" as buttonTheming;
-@use "../components/flat/theming" as flatTheming;
-@use "../components/alert/theming" as alertTheming;
+@use "../components/alert/theming" as alert-theming;
+@use "../components/banner/theming" as banner-theming;
+@use "../components/button/theming" as button-theming;
+@use "../components/flat/theming" as flat-theming;
+@use "../components/navbar/theming" as navbar-theming;
 
 @mixin apply-theme($theme) {
-    body {
+    $theme-name: map.get($theme, "name");
+body.#{$theme-name}-theme {
         background-color: map.get($theme, "background-color-light");
-            color: map.get($theme, "text-color");
-        }
+        color: map.get($theme, "text-color-secondary");
 
-        h3 {
-            color: map.get($theme, "text-color-secondary");
-        }
-
-        q {
-            color: map.get($theme, "text-color-secondary");
+        h1,
+        h2,
+            h3 {
+            color: map.get($theme, "text-color-primary");
         }
 
         a {
             color: map.get($theme, "primary-color");
 
-        @include mixins.on-event {
-            color: map.get($theme, "button-background-color-hover");
-            }
-                        }
+            @include mixins.on-event {
+                color: map.get($theme, "button-background-color-hover");
+                }
+        }
 
-                @include buttonTheming.apply-button-theming($theme);
-                @include flatTheming.apply-flat-theming($theme);
-                @include alertTheming.apply-alert-theming($theme);
+                p {}
+
+        hr {
+            border-color: map.get($theme, "background-color-light");
+        }
+
+                @include alert-theming.apply-alert-theming($theme);
+                @include banner-theming.apply-banner-theming($theme);
+                @include button-theming.apply-button-theming($theme);
+                @include flat-theming.apply-flat-theming($theme);
+                @include navbar-theming.apply-navbar-theming($theme);
+                }
 }

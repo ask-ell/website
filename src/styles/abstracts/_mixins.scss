@@ -23,8 +23,7 @@
   }
 }
 
-// TODO: rename in block
-@mixin component($componentName) {
+@mixin block($componentName) {
   .app-#{$componentName} {
     @content;
   }
@@ -41,8 +40,7 @@
   }
 }
 
-@mixin onWebsiteMobileSize {
-  // TODO: rename
+@mixin on-mobile {
   @media screen and (max-width: $mobile-max-size) {
     @content;
   }
