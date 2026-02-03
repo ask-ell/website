@@ -1,11 +1,24 @@
 ---
-import WipAlert from "../../components/wip-alert.astro";
 import BaseLayout from "../../layouts/base.layout.astro";
+import type { MarkdownResource } from "../../shared/astro";
+import type { Talk } from "../../shared/talks";
 const title = "Talks";
+const talks = Object.values<MarkdownResource<Talk>>(
+    import.meta.glob("./*.md", { eager: true }),
+);
 ---
 
 <BaseLayout title={title}>
     <div class="app-container">
-        <WipAlert />
+        <ul>
+            {
+                talks.map(({ frontmatter: talk }) => (
+                    <li>
+                        [{new Date(talk.date).toLocaleDateString()} ]
+                        <a href={talk.url}>{talk.title}</a> ({talk.lang})
+                    </li>
+                ))
+            }
+        </ul>
     </div>
 </BaseLayout>
