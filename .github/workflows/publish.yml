@@ -29,6 +29,8 @@ jobs:
       - name: Build
         run: npm run build
 
+      - run: touch dist/.nojekyll
+
       - name: Publish
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
