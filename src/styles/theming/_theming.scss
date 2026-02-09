@@ -8,13 +8,14 @@
 
 @mixin apply-theme($theme) {
     $theme-name: map.get($theme, "name");
-body.#{$theme-name}-theme {
+
+    body.#{$theme-name}-theme {
         background-color: map.get($theme, "background-color-light");
         color: map.get($theme, "text-color-secondary");
 
         h1,
         h2,
-            h3 {
+        h3 {
             color: map.get($theme, "text-color-primary");
         }
 
@@ -23,19 +24,21 @@ body.#{$theme-name}-theme {
 
             @include mixins.on-event {
                 color: map.get($theme, "button-background-color-hover");
-                }
+            }
         }
 
-                p {}
+        strong {
+            color: map.get($theme, "text-color-primary");
+        }
 
         hr {
             border-color: map.get($theme, "background-color-light");
         }
 
-                @include alert-theming.apply-alert-theming($theme);
-                @include banner-theming.apply-banner-theming($theme);
-                @include button-theming.apply-button-theming($theme);
-                @include flat-theming.apply-flat-theming($theme);
-                @include navbar-theming.apply-navbar-theming($theme);
-                }
+        @include alert-theming.apply-alert-theming($theme);
+        @include banner-theming.apply-banner-theming($theme);
+        @include button-theming.apply-button-theming($theme);
+        @include flat-theming.apply-flat-theming($theme);
+        @include navbar-theming.apply-navbar-theming($theme);
+    }
 }
