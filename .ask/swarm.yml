@@ -1,0 +1,86 @@
+networks:
+  default:
+    driver: "overlay"
+
+secrets:
+  ask:
+    file: secrets.json
+
+services:
+  code-repository-plugin:
+    image: registry.gitlab.com/ask-ell/innovation/factory/code-repository-plugin:develop
+    networks:
+    - default
+    ports:
+    - "40001:10000"
+    secrets:
+    - ask
+
+  general-plugin:
+    image: registry.gitlab.com/ask-ell/innovation/factory/general-plugin:develop
+    networks:
+    - default
+    ports:
+    - "40003:3000"
+    secrets:
+    - ask
+
+  hosting-plugin:
+    image: registry.gitlab.com/ask-ell/innovation/factory/hosting-plugin:develop
+    networks:
+    - default
+    ports:
+    - "40004:4000"
+    secrets:
+    - ask
+    user: root
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+
+  plugins-manager:
+    image: registry.gitlab.com/ask-ell/innovation/factory/plugins-manager:develop
+    networks:
+    - default
+    ports:
+    - "40008:8000"
+    secrets:
+    - ask
+
+  proxy-plugin:
+    image: registry.gitlab.com/ask-ell/innovation/factory/proxy-plugin:develop
+    networks:
+    - default
+    ports:
+    - "40005:5000"
+    secrets:
+    - ask
+
+  proxy:
+    image: registry.gitlab.com/ask-ell/innovation/factory/proxy:develop
+    networks:
+    - default
+    ports:
+      - target: 8080
+        published: 80
+        protocol: tcp
+        mode: host
+    secrets:
+    - ask
+
+  pwa:
+    image: registry.gitlab.com/ask-ell/innovation/factory/pwa:develop
+    networks:
+    - default
+    ports:
+    - "40006:80"
+    secrets:
+    - ask
+
+  security-plugin:
+    image: registry.gitlab.com/ask-ell/innovation/factory/security-plugin:develop
+    networks:
+    - default
+    ports:
+    - 40007:7000
+    secrets:
+    - ask
