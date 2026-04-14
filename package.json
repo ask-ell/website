@@ -4,6 +4,10 @@
     "start:dev": "astro dev",
     "build": "astro build"
   },
+  "engines": {
+    "node": "20.19.2",
+    "npm": "10.8.2"
+  },
   "devDependencies": {
     "astro": "^5.17.1",
     "sass": "^1.97.3"
