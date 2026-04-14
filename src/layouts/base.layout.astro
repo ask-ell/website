@@ -24,11 +24,7 @@ const { title } = Astro.props;
   <body class="default-theme">
     <Header />
     <main>
-      <Banner title={title}>
-        <div slot="banner-content">
-          <slot name="banner-content" />
-        </div>
-      </Banner>
+      <Banner title={title} />
       <slot />
       <div class="app-container contact-form">
         <ContactCard />
