@@ -28,8 +28,9 @@ requirements-get:
 	cp -r .ask/secrets.sample.json .ask/secrets.json
 
 
-# TODO: https://ask-ell.atlassian.net/browse/ASK-3
-packageManager := npm
+compose := docker compose --file .ask/compose.yml
+run := $(compose) run --rm front-end
+packageManager := $(run) npm
 packageManagerRun := $(packageManager) run
 
 .PHONY: install
@@ -54,7 +55,7 @@ build: node_modules/last_install
 .PHONY: serve
 # Run services in development mode
 serve: .ask/secrets.json node_modules/last_install
-	$(packageManagerRun) start:dev
+	$(compose) up -d
 
 .PHONY: format
 # Format project
@@ -79,7 +80,7 @@ test-watch: node_modules/last_install
 .PHONY: clean
 # Stop and clean services
 clean:
-	$(packageManagerRun) nx reset
+	$(compose) down --volumes
 
 .PHONY: deploy
 # Deploy services in Docker Swarm

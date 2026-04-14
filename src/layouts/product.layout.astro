@@ -1,0 +1,39 @@
+---
+import BaseLayout from "./base.layout.astro";
+import type { Link } from "../shared/links"
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.name}>
+    <div class="app-container">
+        <p>{ frontmatter.description }</p>
+        <img src={"/images/" + frontmatter.portfolioImageFileName}>
+        <div class="links">
+            {
+                frontmatter.links?.map(
+                    (link: Link) => <a class="app-button app-button--outlined" href={ link.url }>{ link.label }</a>
+                )
+            }
+        </div>
+    </div>
+</BaseLayout>
+
+<style style="scss">
+    img {
+        width: 100%;
+    }
+
+    .app-container > * {
+        margin-bottom: 1rem;
+    }
+
+    .links {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        & > * {
+            margin-right: 1rem;
+        }
+    }
+</style>

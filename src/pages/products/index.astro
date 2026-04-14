@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../../layouts/base.layout.astro";
+import type { MarkdownResource } from "../../shared/astro";
+import {
+    productsMarkdownResources,
+    productsCount,
+    sortByPopularity,
+type Product
+} from "../../shared/products";
+
+const title: string = "Products";
+const productsMarkdownResourcesSortedByPopularity: MarkdownResource<Product>[] = productsMarkdownResources.sort(sortByPopularity)
+---
+
+<BaseLayout title={title}>
+    <div class="app-container">
+        <p>We offer several products for our clients.</p>
+        {
+            productsMarkdownResourcesSortedByPopularity.map(
+                ({ frontmatter: product, url }, index) => (
+                    <>
+                        <div
+                            class={`app-box ${index % 2 !== 0 && "app-box--reversed"}`}
+                        >
+                            <div class="app-box__content">
+                                <h2>{product.name}</h2>
+                                <p>{product.description}</p>
+                                <a href={url}>See more</a>
+                            </div>
+                            <div
+                                class="app-box__image"
+                                style={`background-image: url(/images/${product.previewImageFileName})`}
+                            />
+                        </div>
+                        {index != productsCount - 1 && <hr />}
+                    </>
+                ),
+            )
+        }
+    </div>
+</BaseLayout>
