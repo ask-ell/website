@@ -9,7 +9,7 @@ const title = "Services";
 
 <BaseLayout title={title}>
     <div class="app-container">
-        <p>We propose several services for our clients.</p>
+        <p>We offer several services for our clients.</p>
         {
             servicesMarkdownResources.map(
                 ({ frontmatter: service, url }, index) => (
@@ -24,7 +24,7 @@ const title = "Services";
                             </div>
                             <div
                                 class="app-box__image"
-                                style={`background-image: url(/images/${service.imageFileName})`}
+                                style={`background-image: url(/images/${service.previewImageFileName})`}
                             />
                         </div>
                         {index != servicesCount - 1 && <hr />}

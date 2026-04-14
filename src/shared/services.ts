@@ -3,7 +3,7 @@ import { getMarkdownResources, type MarkdownResource } from "./astro";
 export type Service = {
     name: string;
     description: string;
-    imageFileName: string;
+    previewImageFileName: string;
 }
 
 export const servicesMarkdownResources: MarkdownResource<Service>[] = getMarkdownResources(
