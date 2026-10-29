@@ -3,8 +3,7 @@ name: Check Pull Request Validity
 on:
   pull_request:
     branches:
-      - release
-      - develop
+      - main
 
 permissions:
   contents: write
