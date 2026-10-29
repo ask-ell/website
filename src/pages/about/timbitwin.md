@@ -1,5 +1,5 @@
 ---
 layout: ../../layouts/member.layout.astro
-name: Yannick Debree
+name: Tim Bitwin
 position: Founder
 ---
